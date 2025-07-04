@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://devops.juaracoding.com'), // Add your actual domain here
   title: {
     default: "DevOps Juaracoding - Master DevOps Skills",
     template: "%s | DevOps Juaracoding",
