@@ -67,9 +67,19 @@ This project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`)
 
 2.  **Server Configuration**: Ensure your server is set up to receive SSH connections and has Node.js, npm, and a web server (like Nginx) or process manager (like PM2) configured to serve the Next.js application from `/var/www/main`. The deployment script in `deploy.yml` copies the built application to this directory. You may need to uncomment and adjust the `npm install --production` and application restart commands in the `script` section of `deploy.yml` based on your server setup.
 
+## Screenshot
+
+![DevOps Juaracoding Landing Page Screenshot](Screenshot_devopsjc.png)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
 -   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 -   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+## Buy me a coffe
+
+If you like this project and want to support its further development, buy me a coffee!
+
+[![Buy Me a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-1.svg)](https://www.buymeacoffee.com/kudajengke404)
