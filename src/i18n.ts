@@ -11,10 +11,10 @@ i18n
     },
     resources: {
       en: {
-        common: require('../public/locales/en/common.json'),
+        common: (await import('../public/locales/en/common.json')).default,
       },
       id: {
-        common: require('../public/locales/id/common.json'),
+        common: (await import('../public/locales/id/common.json')).default,
       },
     },
   });
