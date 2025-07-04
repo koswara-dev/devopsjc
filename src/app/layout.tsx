@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import I18nProvider from '../components/I18nProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
     default: "DevOps Juaracoding - Master DevOps Skills",
     template: "%s | DevOps Juaracoding",
   },
-  description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
+  description: "Buka kekuatan pengembangan perangkat lunak modern dengan kursus DevOps komprehensif kami. Pelajari CI/CD, Docker, Kubernetes, Cloud, dan banyak lagi!",
   keywords: ["DevOps", "Juaracoding", "CI/CD", "Docker", "Kubernetes", "Cloud Computing", "Software Development", "DevOps Training", "IT Courses"],
   openGraph: {
     title: "DevOps Juaracoding - Master DevOps Skills",
-    description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
+    description: "Buka kekuatan pengembangan perangkat lunak modern dengan kursus DevOps komprehensif kami. Pelajari CI/CD, Docker, Kubernetes, Cloud, dan banyak lagi!",
     url: "https://devops.juaracoding.com", // Replace with actual URL
     siteName: "DevOps Juaracoding",
     images: [
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DevOps Juaracoding - Master DevOps Skills",
-    description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
+    description: "Buka kekuatan pengembangan perangkat lunak modern dengan kursus DevOps komprehensif kami. Pelajari CI/CD, Docker, Kubernetes, Cloud, dan banyak lagi!",
     images: ["/images/hero-orange.jpg"], // Replace with a suitable Twitter card image
   },
   icons: {
@@ -57,7 +58,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );
