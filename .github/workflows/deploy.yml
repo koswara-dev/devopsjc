@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: "out/*"
-          target: "/home/${{ secrets.SSH_USER }}/temp-site"
+          target: "/home/${{ secrets.SSH_USERNAME }}/temp-site"
 
       - name: Move to /var/www/main with sudo
         uses: appleboy/ssh-action@v1.2.2
@@ -43,9 +43,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             sudo rm -rf /var/www/main/*
-            sudo cp -r /home/${{ secrets.SSH_USER }}/temp-site/* /var/www/main/
-            sudo chown -R www-data:www-data /var/www/main/
-            rm -rf /home/${{ secrets.SSH_USER }}/temp-site
+            sudo cp -r /home/${{ secrets.SSH_USERNAME }}/temp-site/* /var/www/main/
+            rm -rf /home/${{ secrets.SSH_USERNAME }}/temp-site
             sudo chmod -R 755 /var/www/main
             sudo chown -R www-data:www-data /var/www/main
             echo "Deployment complete!"
