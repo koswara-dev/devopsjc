@@ -41,6 +41,9 @@ export const metadata: Metadata = {
     description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
     images: ["/images/hero-orange.jpg"], // Replace with a suitable Twitter card image
   },
+  icons: {
+    icon: "/images/favicon.png",
+  },
 };
 
 export default function RootLayout({
