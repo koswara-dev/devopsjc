@@ -1,0 +1,48 @@
+name: Deploy Next.js to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Create the target directory if it doesn't exist
+            mkdir -p /var/www/main
+            # Remove existing files in the target directory
+            rm -rf /var/www/main/*
+            # Copy the build output to the target directory
+            cp -r ${{ github.workspace }}/.next /var/www/main/
+            cp -r ${{ github.workspace }}/public /var/www/main/
+            cp ${{ github.workspace }}/package.json /var/www/main/
+            cp ${{ github.workspace }}/next.config.mjs /var/www/main/
+            # Install dependencies on the server (if needed for production)
+            # cd /var/www/main && npm install --production
+            # Restart your application server (e.g., PM2, systemd, nginx reload)
+            # For example, if using PM2:
+            # pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+            echo "Deployment complete!"
