@@ -13,10 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DevOps Juaracoding Landing Page",
-  description: "Landing page for DevOps Juaracoding courses.",
-  icons: {
-    icon: "/images/favicon.png",
+  title: {
+    default: "DevOps Juaracoding - Master DevOps Skills",
+    template: "%s | DevOps Juaracoding",
+  },
+  description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
+  keywords: ["DevOps", "Juaracoding", "CI/CD", "Docker", "Kubernetes", "Cloud Computing", "Software Development", "DevOps Training", "IT Courses"],
+  openGraph: {
+    title: "DevOps Juaracoding - Master DevOps Skills",
+    description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
+    url: "https://devops.juaracoding.com", // Replace with actual URL
+    siteName: "DevOps Juaracoding",
+    images: [
+      {
+        url: "/images/hero-orange.jpg", // Replace with a suitable Open Graph image
+        width: 1200,
+        height: 675,
+        alt: "DevOps Juaracoding",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DevOps Juaracoding - Master DevOps Skills",
+    description: "Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!",
+    images: ["/images/hero-orange.jpg"], // Replace with a suitable Twitter card image
   },
 };
 

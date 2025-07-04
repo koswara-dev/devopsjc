@@ -20,9 +20,9 @@ export default function Home() {
             Unlock the power of modern software development with our comprehensive DevOps courses. Learn CI/CD, Docker, Kubernetes, Cloud, and more!
           </p>
           <a
-            href="https://lms.juaracoding.com"
+            href="https://juaracoding.co.id"
             target="_blank"
-            className="inline-block bg-orange-600 text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 ease-in-out"
+            className="inline-block bg-orange-600 text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-orange-700 transition duration-300 ease-in-out"
           >
             Explore Courses
           </a>
