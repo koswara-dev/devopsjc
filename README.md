@@ -1,8 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevOps Juaracoding Landing Page
+
+This is a Next.js 15 project for the DevOps Juaracoding landing page, featuring multi-language support (English and Bahasa Indonesia), responsive design, and SEO optimization.
+
+## Features
+
+-   **Next.js 15**: Built with the latest version of Next.js.
+-   **TypeScript**: Ensures type safety and better developer experience.
+-   **Tailwind CSS**: For rapid and responsive UI development.
+-   **Heroicons**: Used for the logo and other icons.
+-   **Multi-language Support**: Implemented using `react-i18next` with English and Bahasa Indonesia translations.
+-   **SEO Optimized**: Includes comprehensive metadata for better search engine visibility.
+-   **Responsive Design**: Optimized for various screen sizes, including mobile.
+-   **GitHub Actions CI/CD**: Automated deployment workflow to a production server via SSH.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +39,37 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) (or the port indicated in your terminal) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   `src/app/page.tsx`: The main landing page component.
+-   `src/app/layout.tsx`: Root layout for the application, including global metadata and i18n provider.
+-   `src/i18n.ts`: i18next configuration for multi-language support.
+-   `src/components/I18nProvider.tsx`: Client component wrapper for `react-i18next`.
+-   `public/locales/en/common.json`: English translation file.
+-   `public/locales/id/common.json`: Bahasa Indonesia translation file.
+-   `public/images/`: Contains hero image and favicons.
+-   `.github/workflows/deploy.yml`: GitHub Actions workflow for deployment.
+-   `next.config.ts`: Next.js configuration, including static export and image unoptimization.
+
+## Deployment with GitHub Actions
+
+This project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) to automate the deployment process to a production server via SSH.
+
+### Setup for Deployment
+
+1.  **GitHub Secrets**: Add the following secrets to your GitHub repository settings (`Settings > Secrets and variables > Actions`):
+    *   `SSH_HOST`: The IP address or hostname of your server.
+    *   `SSH_USERNAME`: The SSH username for your server.
+    *   `SSH_PRIVATE_KEY`: Your SSH private key (ensure it's the one corresponding to the public key authorized on your server).
+    *   `SSH_PORT`: The SSH port of your server (e.g., `22`).
+
+2.  **Server Configuration**: Ensure your server is set up to receive SSH connections and has Node.js, npm, and a web server (like Nginx) or process manager (like PM2) configured to serve the Next.js application from `/var/www/main`. The deployment script in `deploy.yml` copies the built application to this directory. You may need to uncomment and adjust the `npm install --production` and application restart commands in the `script` section of `deploy.yml` based on your server setup.
 
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
