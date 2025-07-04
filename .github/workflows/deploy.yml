@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Next.js application
-        run: npm run build
+      - name: Build static site Next.js application
+        run: npm run build && npm run export
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@master
@@ -31,16 +31,18 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
+          source: "out/*"
+          target: "/var/www/main"
           script: |
             # Create the target directory if it doesn't exist
-            sudo mkdir -p /var/www/main
+            # sudo mkdir -p /var/www/main
             # Remove existing files in the target directory
-            sudo rm -rf /var/www/main/*
+            # sudo rm -rf /var/www/main/*
             # Copy the build output to the target directory
-            sudo cp -r ${{ github.workspace }}/.next /var/www/main/
-            sudo cp -r ${{ github.workspace }}/public /var/www/main/
-            sudo cp ${{ github.workspace }}/package.json /var/www/main/
-            sudo cp ${{ github.workspace }}/next.config.mjs /var/www/main/
+            # sudo cp -r ${{ github.workspace }}/.next /var/www/main/
+            # sudo cp -r ${{ github.workspace }}/public /var/www/main/
+            # sudo cp ${{ github.workspace }}/package.json /var/www/main/
+            # sudo cp ${{ github.workspace }}/next.config.mjs /var/www/main/
             # Install dependencies on the server (if needed for production)
             # cd /var/www/main && npm install --production
             # Restart your application server (e.g., PM2, systemd, nginx reload)
