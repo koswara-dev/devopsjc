@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { CloudIcon } from "@heroicons/react/24/solid"; // Using a solid icon for the logo
-import HeroImage from "@/public/images/hero-orange.jpg";
+import { CloudIcon } from "@heroicons/react/24/solid";
 
 export default function Home() {
   return (
